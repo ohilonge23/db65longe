@@ -3,9 +3,10 @@ extends layout
 block content
   h1= title
 
-  - let result = [{name:"Visual Editor", YrsOfExp:5, broadcastChannel:"HBO"}, {name:"Studio Director", YrsOfExp:2, broadcastChannel:"Melody Ranch film studios"}, {name:"Executive Producer", YrsOfExp:6, broadcastChannel:"Marvel"}]
+  - let result = [{name:"Visual Editor", YrsOfExp:5, broadcastChannel:"HBO"}, {name:"Studio Director", YrsOfExp:2, broadcastChannel:"Metro-Goldwyn-Mayer"}, {name:"Producer", YrsOfExp:6, broadcastChannel:"Marvel"}]
   div(class="container-fluid")
     div(class="row")
+    - let idx = 0;
     each value in result 
-      div(class="col-sm-2", onClick=`buy(${idx+1})`, style="padding:13px") Name: #{value.name} Runtime: #{value.runtime} Broadcast Channel: #{value.broadcastChannel}
-      
+      div(class="col-sm-2", onClick=`buy(${idx+1})`, style="padding:13px") Name: #{value.name} YrsOfExp: #{value.YrsOfExp} Broadcast Channel: #{value.broadcastChannel}
+      - idx += 1;
