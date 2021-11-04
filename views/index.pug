@@ -3,3 +3,14 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  p My Pug Display
+  button(type="button", class="btn btn-primary", onClick="update()") Press Me
+  div(id="target") Display
+
+  script.
+    let client_count = 0;
+    function update() {
+      client_count += 1;
+      out = document.getElementById('target');
+      out.innerHTML = "Value now " + client_count;
+    }
