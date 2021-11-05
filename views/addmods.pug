@@ -16,7 +16,9 @@ block content
         - for(let i=0; i<rows; i++) {
             tr#middle
                 - for(let j = 0; j<cols; j++) {
-                  td=((i+j)%rows)
+                  - let nums = ((i+j)%rows);
+                    td=(nums)                  
+
                 - }
 
         - }

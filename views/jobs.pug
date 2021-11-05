@@ -10,3 +10,7 @@ block content
     each value in result 
       div(class="col-sm-2", onClick=`buy(${idx+1})`, style="padding:13px") Name: #{value.name} YrsOfExp: #{value.YrsOfExp} Broadcast Channel: #{value.broadcastChannel}
       - idx += 1;
+  script.
+    function buy(index) {
+      alert("You just bought this item "+index);
+    }
