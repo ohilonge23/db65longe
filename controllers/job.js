@@ -26,9 +26,17 @@ exports.job_view_all_Page = async function(req, res) {
 }; 
  
 // for a specific job. 
-exports.job_detail = function(req, res) { 
-    res.send('NOT IMPLEMENTED: job detail: ' + req.params.id); 
-}; 
+// for a specific job.
+exports.job_detail = async function(req, res) {
+    console.log("detail" + req.params.id)
+    try {
+    result = await job.findById( req.params.id)
+    res.send(result)
+    } catch (error) {
+    res.status(500)
+    res.send(`{"error": document for id ${req.params.id} not found`);
+    }
+   };
  
 // Handle televisionShow create on POST. 
 exports.job_create_post = async function(req, res) { 

@@ -16,32 +16,20 @@ router.get('/', api_controller.api);
 router.post('/jobs', job_controller.job_create_post); 
  
 // DELETE request to delete job. 
-router.delete('/resource/jobs/:id', job_controller.job_delete); 
+router.delete('/jobs/:id', job_controller.job_delete); 
  
 // PUT request to update job. 
-router.put('/resource/jobs/:id', 
+router.put('/jobs/:id', 
 job_controller.job_update_put); 
  
 // GET request for one job. 
-router.get('/resource/jobs/:id', job_controller.job_detail); 
+router.get('/jobs/:id', job_controller.job_detail); 
  
 // GET request for list of all job items. 
 router.get('/jobs', job_controller.job_list); 
 
 // GET request for one job.
-router.get('/job/:id', costume_controller.costume_detail);
-
-// for a specific job.
-exports.job_detail = async function(req, res) {
-    console.log("detail" + req.params.id)
-    try {
-    result = await Costume.findById( req.params.id)
-    res.send(result)
-    } catch (error) {
-    res.status(500)
-    res.send(`{"error": document for id ${req.params.id} not found`);
-    }
-   };
+router.get('/job/:id', job_controller.job_detail);
 
 module.exports = router; 
 

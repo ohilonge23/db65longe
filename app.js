@@ -5,6 +5,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 const connectionString = process.env.MONGO_CON
+console.log(connectionString);
 mongoose = require('mongoose');
 mongoose.connect(connectionString,
   {useNewUrlParser: true, useUnifiedTopology: true});
@@ -15,7 +16,8 @@ var db = mongoose.connection;
 //Bind connection to error event  
 db.on('error', console.error.bind(console, 'MongoDB connection error:')); 
 db.once("open", function(){ 
- console.log("Connection to DB succeeded")});  
+ console.log("Connection to DB succeeded")
+});  
 
 var job = require("./models/job")
 var indexRouter = require('./routes/index');
@@ -82,7 +84,7 @@ async function recreateDB() {
     console.log("Third object saved")
   });
 }
-let reseed = true;
+let reseed = false;
 if(reseed) {recreateDB();}
 
 module.exports = app;
