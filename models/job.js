@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 const jobSchema = mongoose.Schema({
-    ts_name: String,
-    ts_yrs: Number,
-    ts_broadcastchannel: String
+    name: String,
+    YrsOfExp: Number,
+    broadcastChannel: String
 })
 
 module.exports = mongoose.model("Jobs", jobSchema);

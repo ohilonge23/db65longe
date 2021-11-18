@@ -66,19 +66,19 @@ app.use(function(err, req, res, next) {
 async function recreateDB() {
   await job.deleteMany();
 
-  let instance1 = new job({ts_name:"Christopher Nolan", ts_yrs:6, ts_broadcastchannel:"HBO Max"});
+  let instance1 = new job({name:"Christopher Nolan", YrsOfExp:6, broadcastChannel:"HBO Max"});
   instance1.save(function(err, doc) {
     if(err) return console.err(err);
     console.log("First object saved")
   });
 
-  let instance2 = new job({ts_name:"JJ martin", ts_yrs:4, ts_broadcastchannel:"Comedy Central"});
+  let instance2 = new job({name:"JJ martin", YrsOfExp:4, broadcastChannel:"Comedy Central"});
   instance2.save(function(err, doc) {
     if(err) return console.err(err);
     console.log("Second object saved")
   });
 
-  let instance3 = new job({ts_name:"Kenny Blake", ts_yrs:10, ts_broadcastchannel:"Netflix"});
+  let instance3 = new job({name:"Kenny Blake", YrsOfExp:10, broadcastChannel:"Netflix"});
   instance3.save(function(err, doc) {
     if(err) return console.err(err);
     console.log("Third object saved")

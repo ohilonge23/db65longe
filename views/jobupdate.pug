@@ -1,0 +1,40 @@
+extends layout
+block content
+    h1= title
+    - let jobid = toShow._id
+    - let jobname = toShow.name
+    - let jobYrsOfExp = toShow.YrsOfExp
+    - let jobbroadcastChannel = toShow.broadcastChannel
+
+    div.row(class='mb-2')
+        div.mr-1 ID is
+        div #{jobid}
+    - let actionid = "/resource/jobs/" + jobid
+    form(id='jobForm', action= actionid, method="PUT")
+        div.form-group
+            label.jobAttr(for='name') name
+            input#name(type='text', name='name', value= jobname )
+        div.form-group
+            label.jobAttr(for='broadcastChannel') broadcastChannel
+            input#broadcastChannel(type='text', name='broadcastChannel', value= jobbroadcastChannel )
+        div.form-group
+            label.jobAttr(for='YrsOfExp') YrsOfExp
+            input#YrsOfExp(type='number', name='YrsOfExp', value= jobYrsOfExp )
+        input(type="submit")
+    script.
+        document.forms['jobForm'].addEventListener('submit', (event) => {
+            event.preventDefault();
+            // TODO do something here to show user that form is being submitted
+            fetch(event.target.action, {
+            method: 'PUT',
+            body: new URLSearchParams(new FormData(event.target)) // event.target is the form
+            }).then((resp) => {
+            return resp.json(); // or resp.text() or whatever the server sends
+            }).then((body) => {
+            alert("Update succeded")
+            // TODO handle body
+            }).catch((error) => {
+            // TODO handle error
+            alert("Update failed " + error )
+            });
+            });

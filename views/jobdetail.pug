@@ -1,0 +1,20 @@
+extends layout
+block content
+ h1= title
+ - let jobid = toShow._id
+ - let jobname = toShow.name
+ - let jobYrsOfExp = toShow.YrsOfExp
+ - let jobbroadcastChannel = toShow.broadcastChannel
+ div
+ div.row
+ div(class='jobAttr mr-3') job ID is:
+ div #{jobid}
+ div.row
+ div(class='jobAttr mr-3') job Type is:
+ div #{jobname}
+ div.row
+ div(class='jobAttr mr-3') job broadcastChannel is:
+ div #{jobbroadcastChannel}
+ div.row
+ div(class='jobAttr mr-3') job YrsOfExp is:
+ div #{jobYrsOfExp}
